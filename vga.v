@@ -57,43 +57,7 @@ module vga(
         .vsync(Vsync)
     );
 
-    // --------------------------------------------------
-    // Visible area
-    /*wire video_on;
-    assign video_on = (hcnt < 640) && (vcnt < 480);
-
-    // --------------------------------------------------
-    // Pixel pointer
-    wire [18:0] pixel_addr;
-
-    pixel_point pix_ptr (
-        .clk(pix_clk),
-        .rst(rst),
-        .en(en),
-        .Hsync(video_on),   // IMPORTANT
-        .Vsync(video_on),   // IMPORTANT
-        .addr(pixel_addr)
-    );
-
-    // --------------------------------------------------
-    // Frame buffer
-    wire [5:0] pixel_data;
-
-    frame_buffer fb (
-        .clk(pix_clk),
-        .addr(pixel_addr),
-        .pixel_out(pixel_data)
-    );
-
-    // --------------------------------------------------
-    // RGB output (from frame buffer)
-    assign vgaBlue   = (video_on && en) ? {pixel_data[5:4], 2'b00} : 4'b0000;
-    assign vgaGreen  = (video_on && en) ? {pixel_data[3:2], 2'b00} : 4'b0000;
-    assign vgaRed    = (video_on && en) ? {pixel_data[1:0], 2'b00} : 4'b0000;
-    */
-    
-        // --------------------------------------------------
-    // Visible video region
+   // Visible video region
     wire video_on;
     assign video_on = (hcnt < 640) && (vcnt < 480);
 
